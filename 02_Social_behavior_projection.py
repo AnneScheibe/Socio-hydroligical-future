@@ -19,7 +19,7 @@ import pandas as pd
 # Definition of paramters
 ####################################################################################
 
-basedir = "C:/Users/scheibe/Desktop/master_thesis_scheibe_anne"
+basedir = "C:/Users/scheibe/Documents/GitHub/Socio-hydroligical-future"
 
 ####################################################################################
 # Definition of constants
@@ -34,7 +34,9 @@ M_initial = 0.         # Initial value for societal memory of flood M (Society)
 
 #alpha_H = 10.         # Constant related to relationship between flood water levels to relative damage (Hydrology) 
                        # unit: [m] - Di Baldassarre et al (2015)
-xi_H = 0.2             # Contant proportion of flood level enhancement due to presence of levees (Hydrology) - Di Baldassarre et al (2015)
+# Adjustment of 10.02.2020, after a phone call with Di Baldassarre from ...:
+# The model is calibrated for fluvial flood, maximal_levee_height have to adapt it for coastal floods. Therefore, the constant Xi-H is set to zero. [formerly:xi_H = 0.2]
+xi_H = 0.             # Contant proportion of flood level enhancement due to presence of levees (Hydrology) - Di Baldassarre et al (2015)
 rho_D = 0.03           # Constant maximum relative growthe rate (Demographs) unit:none - Di Baldassarre et al (2015)
 alpha_D = 5.           # Constant ratio preparedness/ awareness (Demography) unit: none - Di Baldassarre et al (2015)
 epsilon_T = 1.1        # Constant Safety factor for levee heightening (Technologogy) - unit: none - Di Baldassarre et al (2015)
