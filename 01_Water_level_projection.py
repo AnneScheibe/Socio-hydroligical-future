@@ -32,7 +32,8 @@ num_sows = 10000
 dps_information = 'local'
 
 
-basedir = "C:/Users/scheibe/Desktop/master_thesis_scheibe_anne"
+
+basedir = "C:/Users/scheibe/Documents/GitHub/Socio-hydroligical-future"
 
 #################################################################################################
 # generate sea levels

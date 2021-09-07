@@ -11,7 +11,7 @@ This dataframe includes statistical quantities calculated for the total data len
 """
 import pandas as pd
 
-basedir = "C:/Users/scheibe/Desktop/master_thesis_scheibe_anne/"
+basedir = "C:/Users/scheibe/Documents/GitHub/Socio-hydroligical-future"
 
 parameters = ['W', 'H', 'F', 'L','D', 'M', 'H']
 societies = ['techno', 'green']
@@ -58,11 +58,13 @@ for my_s in s_values:
                             "median" : file_series.median(axis=1), 
                             "max" : file_series.max(axis=1),
                             "quant_995" : file_series.quantile(0.995, axis=1), 
-                            "select_min" : file_series[selection_min[selection_min].index[2]],
-                            "select_max" : file_series[selection_max[selection_max].index[1]] 
+#                            "select_min" : file_series[selection_min[selection_min].index[2]],
+#                            "select_max" : file_series[selection_max[selection_max].index[1]],
+                            "select_min" : file_series['1'].values,
+                            "select_max" : file_series['57'].values,
                         })
           
-                        outfilepath = "{}output/{}_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(basedir,
+                        outfilepath = "{}/output/{}_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(basedir,
                                 parameter, society, rcp, surge, alpha_H, my_s)
                         df.to_csv(outfilepath)
                         print(outfilepath)
