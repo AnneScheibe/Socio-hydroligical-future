@@ -65,6 +65,7 @@ for my_s in s_values:
                 tide_series_file = "output/tide_series_rcp{}_{}.csv".format(rcp, surge)
                 print(tide_series_file)
                 tide_series = pd.read_csv(tide_series_file, index_col=0)
+                tide_series = tide_series.sort_index().loc[1995:2005]
             
                 time_range = tide_series.index.values
        
@@ -133,31 +134,31 @@ for my_s in s_values:
                         output_W[run_id] = W
                         output_F[run_id] = F
         
-                    output_D_filename = "output/output_D_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
+                    output_D_filename = "output/1995_2005/output_D_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
                             society,rcp, surge, alpha_H, my_s)
                     output_D.to_csv(output_D_filename, header=True)
                     
-                    output_M_filename = "output/output_M_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
+                    output_M_filename = "output/1995_2005/output_M_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
                             society,rcp, surge, alpha_H, my_s)
                     output_M.to_csv(output_M_filename, header=True)
                     
-                    output_L_filename = "output/output_L_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
+                    output_L_filename = "output/1995_2005/output_L_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
                             society,rcp, surge, alpha_H, my_s)
                     output_L.to_csv(output_L_filename, header=True)
                     
-                    output_H_filename = "output/output_H_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
+                    output_H_filename = "output/1995_2005/output_H_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
                             society,rcp, surge, alpha_H, my_s)
                     output_H.to_csv(output_H_filename, header=True)
                     
-                    output_P_filename = "output/output_P_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
+                    output_P_filename = "output/1995_2005/output_P_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
                             society,rcp, surge, alpha_H, my_s)
                     output_P.to_csv(output_P_filename, header=True)
                     
-                    output_W_filename = "output/output_W_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
+                    output_W_filename = "output/1995_2005/output_W_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
                             society,rcp, surge, alpha_H, my_s)
                     output_W.to_csv(output_W_filename, header=True)
                     
-                    output_F_filename = "output/output_F_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
+                    output_F_filename = "output/1995_2005/output_F_{}_rcp{}_{}_alphaH{}_mu_{}.csv".format(
                             society,rcp, surge, alpha_H, my_s)
                     output_F.to_csv(output_F_filename, header=True)
                     
