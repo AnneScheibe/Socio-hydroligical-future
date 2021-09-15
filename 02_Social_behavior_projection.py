@@ -19,7 +19,8 @@ import pandas as pd
 # Definition of paramters
 ####################################################################################
 
-basedir = "C:/Users/scheibe/Documents/GitHub/Socio-hydroligical-future"
+basedir = "/home/insauer/mnt/ebm/anne/Socio-hydroligical-future/"
+initial_values_data = pd.read_csv("/home/insauer/projects/Anne/socio-hydrological-future/Socio-hydroligical-future/data/loc_scale_mean-1.csv")
 
 ####################################################################################
 # Definition of constants
@@ -64,8 +65,8 @@ for my_s in s_values:
                 
                 tide_series_file = "output/tide_series_rcp{}_{}.csv".format(rcp, surge)
                 print(tide_series_file)
-                tide_series = pd.read_csv(tide_series_file, index_col=0)
-                tide_series = tide_series.sort_index().loc[1995:2005]
+                tide_series = pd.read_csv(basedir+tide_series_file, index_col=0)
+                tide_series = tide_series.sort_index().loc[2005:2100]
             
                 time_range = tide_series.index.values
        
@@ -80,20 +81,28 @@ for my_s in s_values:
                     output_W = pd.DataFrame(index=time_range)
                     output_F = pd.DataFrame(index=time_range)
                     
+                    initial_values=initial_values_data.loc[(initial_values_data['society']==society)&
+                                                           (initial_values_data['surge']==surge)&
+                                                           (initial_values_data['rcp']==int(rcp)),
+                                                           ['parameter','mean']]
+                    
                     #for run_id in ["q99", "median", "q01"]: (edited) 
                     for run_id in tide_series.columns:
                         #print(run_id)
-                        
+                        D_initial=initial_values.loc[initial_values['parameter']=='D', 'mean'].values[0]
                         # Defines a list with the length of time_range # All values are set as the initial value
                         D = [D_initial for t in range(len(time_range))]     
+                        M_initial=initial_values.loc[initial_values['parameter']=='M', 'mean'].values[0]
                         M = [M_initial for t in range(len(time_range))]
                         # Initial value for Loss L - Di Baldassarre et al (2015) calculates the loss as a product of flood damage and demography 
-                        L = [0 for t in range(len(time_range))]             
+                        L = [0 for t in range(len(time_range))]
+                        H_initial=initial_values.loc[initial_values['parameter']=='H', 'mean'].values[0]
                         H = [H_initial for t in range(len(time_range))] 
                         # Initial value of levee heightening P
                         P = [0 for t in range(len(time_range))]             
                         # water level (without flood enhancement due to levee)
-                        W = [0 for t in range(len(time_range))]            
+                        W = [0 for t in range(len(time_range))]
+                        F_initial=initial_values.loc[initial_values['parameter']=='F', 'mean'].values[0]
                         F = [F_initial for t in range(len(time_range))]        
                         
                         # time serice of flood height for 1850 to 2100
